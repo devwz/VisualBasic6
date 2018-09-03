@@ -167,7 +167,7 @@ Begin VB.Form Main
       Top             =   840
       Width           =   735
    End
-   Begin VB.Label label_display 
+   Begin VB.Label main_label 
       Alignment       =   1  'Right Justify
       Caption         =   "0"
       Height          =   615
@@ -182,3 +182,226 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
+Dim operation As String
+Dim tVal As Double
+Dim fVal As Double
+
+Private Sub bot_dot_Click()
+
+    If Not InStr(1, main_label.Caption, ".") > 0 Then
+        main_label.Caption = main_label.Caption + "."
+    End If
+
+End Sub
+
+Private Sub btn_0_Click()
+
+    If operation = "END" Then
+        main_label.Caption = "0"
+        operation = "WIP"
+    End If
+    
+    If main_label.Caption = "0" Then
+        main_label.Caption = "0"
+    Else
+        main_label.Caption = main_label.Caption + "0"
+    End If
+
+End Sub
+
+Private Sub btn_1_Click()
+
+    If operation = "END" Then
+        main_label.Caption = "0"
+        operation = "WIP"
+    End If
+    
+    If main_label.Caption = "0" Then
+        main_label.Caption = "1"
+    Else
+        main_label.Caption = main_label.Caption + "1"
+    End If
+    
+End Sub
+
+Private Sub btn_2_Click()
+
+    If operation = "END" Then
+        main_label.Caption = "0"
+        operation = "WIP"
+    End If
+    
+    If main_label.Caption = "0" Then
+        main_label.Caption = "2"
+    Else
+        main_label.Caption = main_label.Caption + "2"
+    End If
+    
+End Sub
+
+Private Sub btn_3_Click()
+
+    If operation = "END" Then
+        main_label.Caption = "0"
+        operation = "WIP"
+    End If
+
+    If main_label.Caption = "0" Then
+        main_label.Caption = "3"
+    Else
+        main_label.Caption = main_label.Caption + "3"
+    End If
+    
+End Sub
+
+Private Sub btn_4_Click()
+
+    If operation = "END" Then
+        main_label.Caption = "0"
+        operation = "WIP"
+    End If
+
+    If main_label.Caption = "0" Then
+        main_label.Caption = "4"
+    Else
+        main_label.Caption = main_label.Caption + "4"
+    End If
+    
+End Sub
+
+Private Sub btn_5_Click()
+
+    If operation = "END" Then
+        main_label.Caption = "0"
+        operation = "WIP"
+    End If
+
+    If main_label.Caption = "0" Then
+        main_label.Caption = "5"
+    Else
+        main_label.Caption = main_label.Caption + "5"
+    End If
+    
+End Sub
+
+Private Sub btn_6_Click()
+
+    If operation = "END" Then
+        main_label.Caption = "0"
+        operation = "WIP"
+    End If
+
+    If main_label.Caption = "0" Then
+        main_label.Caption = "6"
+    Else
+        main_label.Caption = main_label.Caption + "6"
+    End If
+    
+End Sub
+
+Private Sub btn_7_Click()
+
+    If operation = "END" Then
+        main_label.Caption = "0"
+        operation = "WIP"
+    End If
+
+    If main_label.Caption = "0" Then
+        main_label.Caption = "7"
+    Else
+        main_label.Caption = main_label.Caption + "7"
+    End If
+    
+End Sub
+
+Private Sub btn_8_Click()
+
+    If operation = "END" Then
+        main_label.Caption = "0"
+        operation = "WIP"
+    End If
+
+    If main_label.Caption = "0" Then
+        main_label.Caption = "8"
+    Else
+        main_label.Caption = main_label.Caption + "8"
+    End If
+    
+End Sub
+
+Private Sub btn_9_Click()
+
+    If operation = "END" Then
+        main_label.Caption = "0"
+        operation = "WIP"
+    End If
+
+    If main_label.Caption = "0" Then
+        main_label.Caption = "9"
+    Else
+        main_label.Caption = main_label.Caption + "9"
+    End If
+    
+End Sub
+
+Private Sub btn_clean_Click()
+    main_label.Caption = "0"
+    fVal = 0
+    tVal = 0
+End Sub
+
+Private Sub btn_div_Click()
+    tVal = Val(main_label.Caption)
+    main_label.Caption = "0"
+    operation = "DIV"
+End Sub
+
+Private Sub btn_mult_Click()
+    tVal = Val(main_label.Caption)
+    main_label.Caption = "0"
+    operation = "MULT"
+End Sub
+
+Private Sub btn_sub_Click()
+    tVal = Val(main_label.Caption)
+    main_label.Caption = "0"
+    operation = "SUB"
+End Sub
+
+Private Sub btn_sum_Click()
+    tVal = Val(main_label.Caption)
+    main_label.Caption = "0"
+    operation = "SUM"
+End Sub
+
+Private Sub btn_equals_Click()
+
+    Select Case operation
+        Case "SUM"
+            fVal = tVal + Val(main_label.Caption)
+            Equals (fVal)
+        Case "SUB"
+            fVal = tVal - Val(main_label.Caption)
+            Equals (fVal)
+        Case "MULT"
+            fVal = tVal * Val(main_label.Caption)
+            Equals (fVal)
+        Case "DIV"
+            fVal = tVal / Val(main_label.Caption)
+            Equals (fVal)
+            
+    End Select
+    
+    operation = "END"
+    
+End Sub
+
+Private Sub Equals(ByVal fVal As Double)
+
+    main_label.Caption = fVal
+    
+    tVal = fVal
+    fVal = 0
+    
+End Sub
