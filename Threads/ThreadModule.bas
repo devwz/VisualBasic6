@@ -18,23 +18,18 @@ Declare Function CreateThread Lib "kernel32.dll" ( _
 ' dwCreatingFlags - Permite o controle do status do inicio da thread
 ' IpThreadID - Identificador de encadeamento da thread
 
-' EXEMPLO
-' Dim handle&
-' handle& = CreateThread(0, 2000, AddressOf AAA, AAA, 0, AAA)
+Declare Function TerminateThread Lib "kernel32.dll" (ByVal handle As Long, ByVal dwExitCode As Long) As Long
+Declare Function CloseHandle Lib "kernel32.dll" (ByVal handle As Long) As Long
 
-Declare Function TerminateThread Lib "kernel32.dll" (ByVal hThread As Long, ByVal dwExitCode As Long) As Long
-Declare Function CloseHandle Lib "kernel32.dll" (ByVal hObject As Long) As Long
+Public Function Thread(ByVal obj As Util)
 
-
-Public Function AsyncThread(ByVal obj As MyClass)
-
-    Dim threadid As Long
-    Dim handle&
+    Dim threadID As Long
+    Dim handle As Long
     
-    Dim threadparam As Long
-    threadparam = ObjPtr(obj)
+    Dim threadParam As Long
+    threadParam = ObjPtr(obj)
     
-    handle = CreateThread(0, 2000, AddressOf BackgroundThread, threadparam, 0, threadid)
+    handle = CreateThread(0, 0, AddressOf ToDoSomething, threadParam, 0, threadID)
     
     If handle = 0 Then
         Exit Function
@@ -42,24 +37,16 @@ Public Function AsyncThread(ByVal obj As MyClass)
     
     CloseHandle handle
     
-    AsyncThread = threadid
+    Thread = threadID
 
 End Function
 
+Public Sub ToDoSomething(ByVal param As Long)
 
-Public Sub BackgroundThread()
-
-    For j = 0 To 30
-        Debug.Print j
-        Sleep 1000
-    Next
-    
-    handle = 0
-
-End Sub
-
-Public Sub StopThreads()
-
-    handle = 0
+        Dim tlog As Util
+        Set tlog = New Util
+        
+        Do While Not tlog.Log(20)
+        Loop
 
 End Sub
